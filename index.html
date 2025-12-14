@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>坐姿监测器</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      background: #f5f6f8;
+      text-align: center;
+      padding-top: 60px;
+    }
+    video {
+      width: 480px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+    h1 { margin-bottom: 10px; }
+    p { color: #555; }
+  </style>
+</head>
+<body>
+
+<h1>💻 坐姿监测器（Demo）</h1>
+<p>允许摄像头后，即可开始检测</p>
+
+<video autoplay playsinline></video>
+
+<script>
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      document.querySelector('video').srcObject = stream;
+    })
+    .catch(() => {
+      alert("请允许摄像头访问");
+    });
+</script>
+
+</body>
+</html>
